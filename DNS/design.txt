@@ -1,0 +1,13 @@
+程序代码需要解决如下问题：
+1.	如何把源IP地址伪造成受害者的IP地址。
+2.	如何封装请求，使之尽可能得到最大的响应
+3.	如何测试，DNS DDOS攻击生效。
+针对以上问题，需要如下知识点:
+Raw socket    dns相关系统调用。Dns报文封装。
+
+/******************把测试例补上********************/
+头文件：#include<netdb.h>
+数据结构：struct hostent
+struct hostent *gethostbyname(const char *name);此函数是不可重入的，函数返回时应立刻把结果取走。
+struct hostent *gethostbyaddr(const void *addr, socklen_t len, int type);参数1是点分十进制格式。
+
